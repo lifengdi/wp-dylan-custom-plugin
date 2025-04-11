@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Dylan Custom Archive Plugin
+Plugin Name: Dylan Custom Plugin
 Plugin URI:
 Description: 自定义分类、日期归档和标签短代码插件
 Version: 1.0
