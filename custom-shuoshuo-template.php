@@ -20,3 +20,24 @@ function load_custom_shuoshuo_template($template) {
     return $template;
 }
 add_filter('template_include', 'load_custom_shuoshuo_template');
+
+// 注册自定义页面模板
+function simple_shuoshuo_template($templates) {
+    $templates['shuoshuo-simple-template.php'] = '简约风说说';
+    return $templates;
+}
+add_filter('theme_page_templates', 'simple_shuoshuo_template');
+
+// 加载自定义页面模板
+function load_simple_shuoshuo_template($template) {
+    global $post;
+    if (isset($post) && 'shuoshuo-simple-template.php' === get_post_meta($post->ID, '_wp_page_template', true)) {
+        $plugin_dir = plugin_dir_path(__FILE__);
+        $new_template = $plugin_dir . 'shuoshuo-simple-template.php';
+        if (file_exists($new_template)) {
+            return $new_template;
+        }
+    }
+    return $template;
+}
+add_filter('template_include', 'load_simple_shuoshuo_template');

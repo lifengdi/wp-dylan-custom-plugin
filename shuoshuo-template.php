@@ -259,7 +259,7 @@ get_header();
                             <a class="cbp_tmlabel" href="javascript:void(0)"  onclick="window.location.href='<?php echo $post_permalink; ?>'">
                                 <p><?php the_content(); ?></p>
                                 <p class="shuoshuo_time">
-                                    <span><i class="fa fa-clock-o"></i> <?php the_time('Y年n月j日G:i'); ?></span>
+                                    <span><?php the_time('Y年n月j日G:i'); ?></span>
                                     <span class="comment-count">
                                         评论: <?php echo $comment_count; ?>
                                     </span>
