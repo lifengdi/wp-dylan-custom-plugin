@@ -1,11 +1,14 @@
 <?php
-
 /**
  * Template Name: 简约风说说
  */
 
 get_header();
 ?>
+
+<!-- 引入 Font Awesome 图标库 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 <style>
     body {
         background-color: #f9f9f9;
@@ -21,57 +24,89 @@ get_header();
 
    .shuoshuo-item {
         background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-        padding: 20px;
-        transition: box-shadow 0.3s ease;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        margin-bottom: 30px;
+        padding: 24px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
    .shuoshuo-item:hover {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        transform: translateY(-4px);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
     }
 
    .shuoshuo-author {
         display: flex;
-        align-items: center;
-        margin-bottom: 10px;
+        align-items: flex-start;
+        margin-bottom: 16px;
     }
 
    .shuoshuo-author img {
-        width: 40px;
-        height: 40px;
+        width: 56px;
+        height: 56px;
         border-radius: 50%;
-        margin-right: 10px;
+        margin-right: 16px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+   .author-info {
+        display: flex;
+        flex-direction: column;
     }
 
    .shuoshuo-author-name {
-        font-weight: bold;
-    }
-
-   .shuoshuo-content {
-        line-height: 1.6;
-        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: 600;
+        color: #1a1a1a;
     }
 
    .shuoshuo-time {
-        font-size: 0.9em;
-        color: #888;
+        font-size: 14px;
+        color: #606770;
+        margin-top: 6px;
     }
 
-   .shuoshuo-comment-count {
-        color: #007BFF;
+   .shuoshuo-content {
+        font-size: 16px;
+        line-height: 1.75;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+   .interaction-bar {
+        padding-top: 20px;
+        border-top: 1px solid #f0f2f5;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        font-size: 14px;
+    }
+
+   .comment-action {
+        display: flex;
+        align-items: center;
+        gap: 6px;
         text-decoration: none;
-        margin-left: 10px;
+        color: #606770;
+        transition: color 0.2s ease;
     }
 
-   .shuoshuo-comment-count:hover {
-        text-decoration: underline;
+   .comment-count {
+        font-weight: 500;
+        color: #333;
     }
 
     @media screen and (max-width: 768px) {
        .shuoshuo-container {
-            padding: 10px;
+            padding: 16px;
+        }
+       .shuoshuo-author img {
+            width: 48px;
+            height: 48px;
+        }
+       .shuoshuo-author-name {
+            font-size: 16px;
         }
     }
 </style>
@@ -80,77 +115,60 @@ get_header();
     <main id="main" class="site-main" role="main">
         <div class="shuoshuo-container">
             <?php
-            $paged = (get_query_var('paged'))? get_query_var('paged') : 1;
-            // 使用 WP_Query 代替 query_posts
+            $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
             $args = array(
-                'post_type' =>'shuoshuo',
-                'post_status' => 'publish',
-                'posts_per_page' => 20,
-                'paged' => $paged
+                'post_type'      => 'shuoshuo',
+                'post_status'    => 'publish',
+                'posts_per_page' => 1,
+                'paged'          => $paged
             );
             $query = new WP_Query($args);
             $total_pages = $query->max_num_pages;
-            if ($query->have_posts()) : ?>
+            ?>
 
-                    <?php
-                    while ($query->have_posts()) : $query->the_post();
-                        $comment_count = get_comments_number();
-                        $post_permalink = get_permalink();
-                        ?>
-                        <div class="shuoshuo-item">
-                <div class="shuoshuo-author">
-                    <?php echo get_avatar(get_the_author_meta('ID'), 40); ?>
-                    <span class="shuoshuo-author-name"><?php the_author(); ?></span>
+            <?php if ($query->have_posts()) : ?>
+                <?php while ($query->have_posts()) : $query->the_post(); ?>
+                <div class="shuoshuo-item">
+                    <div class="shuoshuo-author">
+                        <?php echo get_avatar(get_the_author_meta('ID'), 56); ?>
+                        <div class="author-info">
+                            <span class="shuoshuo-author-name"><?php the_author(); ?></span>
+                            <span class="shuoshuo-time"><?php the_time('Y年n月j日 G:i'); ?></span>
+                        </div>
+                    </div>
+
+                    <div class="shuoshuo-content">
+                        <?php the_content(); ?>
+                    </div>
+
+                    <div class="interaction-bar">
+                        <!-- 评论数量显示区 -->
+                        <a href="<?php echo get_permalink(); ?>" class="comment-action">
+                            <i class="fa-regular fa-comment"></i>
+                            <span class="comment-count"><?php echo get_comments_number() ?: '0'; ?></span> 条评论
+                        </a>
+                    </div>
                 </div>
-                <div class="shuoshuo-content">
-                    <?php the_content(); ?>
+                <?php endwhile; ?>
+                <?php wp_reset_postdata(); ?>
+
+                <?php if ($total_pages > 1) : ?>
+                <div class="pagination" style="text-align: center; margin-top: 30px;">
+                    <?php echo paginate_links(array(
+                        'base'      => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
+                        'format'    => '?paged=%#%',
+                        'current'   => max(1, $paged),
+                        'total'     => $total_pages
+                    )); ?>
                 </div>
-                <div class="shuoshuo-time">
-                    <?php the_time('Y年n月j日G:i'); ?>
-                    <a href="<?php echo $post_permalink; ?>" class="shuoshuo-comment-count">
-                        评论: <?php echo $comment_count; ?>
-                    </a>
-                </div>
-            </div>
-                    <?php endwhile;
-                    wp_reset_postdata(); // 重置查询
-                    ?>
-                <?php
-                if ($total_pages > 1) {
-                    $big = 999999999; // 需要一个不太可能的整数
-                    echo '<div class="pagination">';
-                    echo paginate_links(array(
-                        'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-                        'format' => '?paged=%#%',
-                        'current' => max(1, $paged),
-                        'total' => $total_pages
-                    ));
-                    echo '</div>';
-                }
-                ?>
-            <?php
-            else : ?>
-                <h3 style="text-align: center;">你还没有发表说说噢！</h3>
-                <p style="text-align: center;">赶快去发表你的第一条说说心情吧！</p>
-            <?php
-            endif; ?>
+                <?php endif; ?>
+
+            <?php else : ?>
+                <h3 style="text-align: center; margin-top: 50px;">你还没有发表说说噢！</h3>
+                <p style="text-align: center; color: #666;">赶快去发表你的第一条说说心情吧！</p>
+            <?php endif; ?>
         </div>
-    </main><!-- #main -->
-</div><!-- #primary -->
-<script type="text/javascript">
-    $(function () {
-        var oldClass = "";
-        var Obj = "";
-        $(".cbp_tmtimeline li").hover(function () {
-            Obj = $(this).children(".shuoshuo_author_img");
-            Obj = Obj.children("img");
-            oldClass = Obj.attr("class");
-            var newClass = oldClass + " zhuan";
-            Obj.attr("class", newClass);
-        }, function () {
-            Obj.attr("class", oldClass);
-        });
-    });
-</script>
-<?php
-get_footer();
+    </main>
+</div>
+
+<?php get_footer(); ?>
