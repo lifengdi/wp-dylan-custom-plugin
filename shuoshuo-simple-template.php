@@ -119,7 +119,7 @@ get_header();
             $args = array(
                 'post_type'      => 'shuoshuo',
                 'post_status'    => 'publish',
-                'posts_per_page' => 1,
+                'posts_per_page' => 20,
                 'paged'          => $paged
             );
             $query = new WP_Query($args);
