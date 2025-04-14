@@ -1,6 +1,7 @@
 <?php
+
 // 注册说说自定义文章类型
-function register_shuoshuo_post_type() {
+function create_shuoshuo_post_type() {
     $labels = array(
         'name'               => '说说',
         'singular_name'      => '说说',
@@ -23,10 +24,10 @@ function register_shuoshuo_post_type() {
         'has_archive'        => true,
         'publicly_queryable' => true,
         'show_ui'            => true,
-        'show_in_rest'       => true,
+		'show_in_rest' => true,
         'show_in_menu'       => true,
         'query_var'          => true,
-        'rewrite'            => array('slug' =>'shuoshuo'),
+        'rewrite'            => array('slug' => 'shuoshuo'),
         'capability_type'    => 'post',
         'hierarchical'       => false,
         'menu_position'      => 5,
@@ -35,6 +36,8 @@ function register_shuoshuo_post_type() {
 
     register_post_type('shuoshuo', $args);
 }
-add_action('init','register_shuoshuo_post_type');
+add_action('init', 'create_shuoshuo_post_type');
 
-register_activation_hook(__FILE__, 'create_shuoshuo_template_file');
+
+require_once plugin_dir_path( __FILE__ ).'custom-shuoshuo-template.php';
+
