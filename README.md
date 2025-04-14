@@ -35,10 +35,17 @@
 - **创建说说页面**：新建页面，在页面编辑界面的“页面属性” - “模板”处选择“说说/微语”模板，保存页面后访问该页面，可看到按特定样式展示的说说列表，包含作者头像、内容、发布时间和评论数量。 
 
 ## 插件地址
+插件下载：
 [https://github.com/lifengdi/wp-dylan-custom-plugin/releases](https://github.com/lifengdi/wp-dylan-custom-plugin/releases "https://github.com/lifengdi/wp-dylan-custom-plugin/releases")
+
+问题反馈：
+[https://github.com/lifengdi/wp-dylan-custom-plugin/issues](https://github.com/lifengdi/wp-dylan-custom-plugin/issues "https://github.com/lifengdi/wp-dylan-custom-plugin/issues")
+
 
 ## 插件赞助
 [https://www.lifengdi.com/support](https://www.lifengdi.com/support "https://www.lifengdi.com/support")
 
 ## 插件说明
 [https://www.lifengdi.com/archives/article/4314](https://www.lifengdi.com/archives/article/4314 "https://www.lifengdi.com/archives/article/4314")
+
+欢迎大家star。
