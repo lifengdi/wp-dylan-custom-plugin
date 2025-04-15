@@ -5,7 +5,7 @@ require_once __DIR__ . '/sdk/ve-tos-php-sdk-2.1.12.phar';
 
 use Volc\Service\ImageX;
 
-define('IMAGEX_VERSION', '1.0.1');
+define('IMAGEX_VERSION', DCLYN_CUSTOM_PLUGIN_VERSION);
 define('IMAGEX_BASEFOLDER', plugin_basename(dirname(__FILE__)));
 
 register_activation_hook(__FILE__, 'imagex_set_options');

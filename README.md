@@ -34,6 +34,15 @@
 - **功能介绍**：在 WordPress 后台左侧菜单，点击“说说” - “新增说说”，填写标题、内容等信息后发布。
 - **创建说说页面**：新建页面，在页面编辑界面的“页面属性” - “模板”处选择“说说/微语”模板，保存页面后访问该页面，可看到按特定样式展示的说说列表，包含作者头像、内容、发布时间和评论数量。 
 
+#### 6. 使用火山引擎图片服务（ImageX）作为附件存储空间。
+- 可配置是否上传缩略图和是否保留本地备份
+- 本地删除可同步删除火山引擎图片服务 ImageX 中的文件
+- 支持替换数据库中旧的资源链接地址
+- 支持完整地域使用
+- 支持同步历史附件到火山引擎图片服务 ImageX
+- 支持火山引擎图片服务 ImageX 图片处理
+- 支持自动重命名文件
+
 ## 插件地址
 插件下载：
 [https://github.com/lifengdi/wp-dylan-custom-plugin/releases](https://github.com/lifengdi/wp-dylan-custom-plugin/releases "https://github.com/lifengdi/wp-dylan-custom-plugin/releases")
