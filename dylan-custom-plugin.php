@@ -12,3 +12,5 @@ License: GPL2
 require_once plugin_dir_path( __FILE__ ).'shuoshuo-functions.php';
 
 require_once plugin_dir_path( __FILE__ ).'custom-archive-plugin.php';
+
+require_once plugin_dir_path( __FILE__ ).'imagex.php';
