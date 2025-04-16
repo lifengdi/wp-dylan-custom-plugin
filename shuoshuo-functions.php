@@ -41,3 +41,13 @@ add_action('init', 'create_shuoshuo_post_type');
 
 require_once plugin_dir_path( __FILE__ ).'custom-shuoshuo-template.php';
 
+// 添加 CSS 样式
+function custom_shuo_plugin_styles() {
+    echo '<style>
+        .shuo-content-area {
+            width: 960px;
+            margin: auto;
+        }
+    </style>';
+}
+add_action( 'wp_head', 'custom_shuo_plugin_styles' );

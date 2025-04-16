@@ -111,7 +111,7 @@ get_header();
     }
 </style>
 
-<div id="primary" class="content-area" style="width:100%">
+<div id="primary" class="shuo-content-area">
     <main id="main" class="site-main" role="main">
         <div class="shuoshuo-container">
             <?php

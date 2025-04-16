@@ -57,4 +57,7 @@
 ## 插件说明
 [https://www.lifengdi.com/archives/article/4314](https://www.lifengdi.com/archives/article/4314 "https://www.lifengdi.com/archives/article/4314")
 
+## 更新日志
+[Dylan Custom Plugin 1.0.2版本更新说明](https://www.lifengdi.com/archives/article/4317 "https://www.lifengdi.com/archives/article/4317")
+
 欢迎大家star。
