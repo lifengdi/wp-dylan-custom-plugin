@@ -45,7 +45,14 @@ require_once plugin_dir_path( __FILE__ ).'custom-shuoshuo-template.php';
 function custom_shuo_plugin_styles() {
     $custom_css = get_option('custom_shuoshuo_css', '.shuo-content-area {
     width: 90%;
+    max-width: 960px;
     margin: auto;
+}
+
+@media (max-width: 767px) {
+    .shuo-content-area {
+        width: 95%;
+    }
 }');
     echo '<style>
 	'. $custom_css. '
@@ -76,7 +83,14 @@ function custom_shuoshuo_css_page() {
 
     $custom_css = get_option('custom_shuoshuo_css', '.shuo-content-area {
     width: 90%;
+    max-width: 960px;
     margin: auto;
+}
+
+@media (max-width: 767px) {
+    .shuo-content-area {
+        width: 95%;
+    }
 }');
     ?>
     <div class="wrap">
