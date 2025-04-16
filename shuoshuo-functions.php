@@ -44,7 +44,7 @@ require_once plugin_dir_path( __FILE__ ).'custom-shuoshuo-template.php';
 // 添加 CSS 样式
 function custom_shuo_plugin_styles() {
     $custom_css = get_option('custom_shuoshuo_css', '.shuo-content-area {
-    width: 960px;
+    width: 90%;
     margin: auto;
 }');
     echo '<style>
@@ -75,7 +75,7 @@ function custom_shuoshuo_css_page() {
     }
 
     $custom_css = get_option('custom_shuoshuo_css', '.shuo-content-area {
-    width: 960px;
+    width: 90%;
     margin: auto;
 }');
     ?>
