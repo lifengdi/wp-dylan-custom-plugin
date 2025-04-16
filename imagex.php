@@ -658,7 +658,7 @@ function imagex_setting_page()
                     </th>
                     <td>
                         <input type="text" name="old_url" size="50" placeholder="请输入要替换的旧域名"/>
-                        <p>如：<code>https://lifengdi.come</code></p>
+                        <p>如：<code>https://lifengdi.com</code></p>
                     </td>
                 </tr>
                 <tr>
