@@ -43,6 +43,10 @@
 - 支持火山引擎图片服务 ImageX 图片处理
 - 支持自动重命名文件
 
+#### 7. 评论支持emoji表情
+
+#### 8. 评论支持markdown语法
+
 ## 插件地址
 插件下载：
 [https://github.com/lifengdi/wp-dylan-custom-plugin/releases](https://github.com/lifengdi/wp-dylan-custom-plugin/releases "https://github.com/lifengdi/wp-dylan-custom-plugin/releases")

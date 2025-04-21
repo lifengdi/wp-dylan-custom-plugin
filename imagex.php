@@ -412,13 +412,6 @@ function imagex_setting_post_thumbnail_ci($html, $post_id, $post_image_id)
     return $html;
 }
 
-// 在导航栏“设置”中添加条目
-function imagex_add_setting_page()
-{
-    add_options_page('火山引擎ImageX设置', '火山引擎ImageX设置','manage_options', __FILE__, 'imagex_setting_page');
-}
-add_action('admin_menu', 'imagex_add_setting_page');
-
 function imagex_setting_page()
 {
     if (!current_user_can('manage_options')) {
