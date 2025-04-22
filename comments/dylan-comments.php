@@ -245,7 +245,7 @@ function setup_comment_features() {
             $emoji_output = ob_get_clean();
         }
 
-        $notice = '<p><small class="markdown-comment-notice">' . esc_html__( 'You can use the Markdown in the comment form.',
+        $notice = '<p><small class="markdown-comment-notice">' . esc_html__( '您可以在评论表单中使用Markdown语法。',
                 'markdown-comment' ) . '</small></p>';
         return $field . $emoji_output . $notice;
     }

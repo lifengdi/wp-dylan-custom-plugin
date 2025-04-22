@@ -47,7 +47,7 @@ function setup_admin_menu_pages() {
                         </td>
                     </tr>
                     <tr valign="top">
-                        <th scope="row">启用Emoji评论</th>
+                        <th scope="row">评论开启Emoji</th>
                         <td>
                             <input type="radio" id="emoji_enabled_yes" name="dcp_emoji_comments_enabled" value="yes" <?php checked($emoji_enabled, 'yes'); ?>>
                             <label for="emoji_enabled_yes">是</label><br>
