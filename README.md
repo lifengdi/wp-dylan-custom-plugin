@@ -47,6 +47,12 @@
 - 评论支持emoji表情
 - 评论支持markdown语法
 
+#### 8. 股票查询
+- 可以在文章或页面中使用 [stock_monitor] 短码来显示后台添加的已监控股票列表。
+- 如果你需要自定义标题，可以使用 [stock_monitor title="自定义标题"] 短码，将 “自定义标题” 替换为你想要显示的标题。
+- 如果你想指定显示的股票代码，可以使用 [stock_monitor codes="600001,000001"] 短码，将 “600001,000001” 替换为你要显示的股票代码，多个代码用逗号分隔。
+- 你也可以同时使用标题和指定股票代码，例如 [stock_monitor title="我的股票列表" codes="600001,000001"]。
+
 ## 插件地址
 插件下载：
 [https://github.com/lifengdi/wp-dylan-custom-plugin/releases](https://github.com/lifengdi/wp-dylan-custom-plugin/releases "https://github.com/lifengdi/wp-dylan-custom-plugin/releases")

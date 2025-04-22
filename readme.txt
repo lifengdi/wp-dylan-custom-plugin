@@ -3,7 +3,7 @@ Contributors: Dylan Li
 Donate link: https://www.lifengdi.com/support
 Tags: imagex, byteoc, volcengine, 火山引擎, 字节跳动, 说说, 归档
 Requires at least: 4.6
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 7.0.0
 Stable tag: 1.0.2
 License: Apache 2.0
@@ -47,7 +47,10 @@ License URI: http://www.apache.org/licenses/LICENSE-2.0.html
 请前往火山引擎官网，ImageX图片服务的服务管理中打开*源地址访问*功能。
 
 == Changelog ==
-= 1.0.2 =
+= 1.0.4 =
+* 股票监控
+
+= 1.0.3 =
 * 评论支持markdown语法
 * 评论支持emoji表情
 
