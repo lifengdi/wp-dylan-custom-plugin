@@ -47,6 +47,9 @@ License URI: http://www.apache.org/licenses/LICENSE-2.0.html
 请前往火山引擎官网，ImageX图片服务的服务管理中打开*源地址访问*功能。
 
 == Changelog ==
+= 1.0.2 =
+* 评论支持markdown语法
+* 评论支持emoji表情
 
 = 1.0.2 =
 * 增加火山引擎支持
