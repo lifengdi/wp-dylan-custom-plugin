@@ -62,6 +62,6 @@
 [https://www.lifengdi.com/archives/article/4314](https://www.lifengdi.com/archives/article/4314 "https://www.lifengdi.com/archives/article/4314")
 
 ## 更新日志
-[Dylan Custom Plugin 1.0.2版本更新说明](https://www.lifengdi.com/archives/article/4317 "https://www.lifengdi.com/archives/article/4317")
+[Dylan Custom Plugin 更新日志](https://www.lifengdi.com/archives/category/article/cha-jian "https://www.lifengdi.com/archives/category/article/cha-jian")
 
 欢迎大家star。
