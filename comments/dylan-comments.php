@@ -220,7 +220,7 @@ function setup_comment_features() {
                 .emoji-tab-content {
                     padding-top: 10px;
                     flex: 1;
-                    overflow-y: auto;
+                    padding-bottom: 10px;
                 }
                 .emoji-group-tab {
                     display: none;
