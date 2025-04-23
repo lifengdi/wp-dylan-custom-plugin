@@ -44,6 +44,14 @@ function setup_admin_menu_pages() {
             'dcp-custom-archive-shortcodes',
             'custom_archive_shortcode_instructions'
         );
+        add_submenu_page(
+            'dcp-setting',
+            '时间轴设置',
+            '时间轴设置',
+            'manage_options',
+            'dcp-custom_time_line_settings',
+            'custom_time_line_display_function'
+        );
     }
     add_action('admin_menu', 'dcp_setting_parent_menu');
 

@@ -23,3 +23,5 @@ require_once plugin_dir_path( __FILE__ ).'stock-monitor.php';
 require_once plugin_dir_path( __FILE__ ).'dcp-setting.php';
 
 require_once plugin_dir_path(__FILE__) . 'comments/dylan-comments.php';
+
+require_once plugin_dir_path( __FILE__ ).'timeline.php';

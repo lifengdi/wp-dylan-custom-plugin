@@ -49,6 +49,7 @@ License URI: http://www.apache.org/licenses/LICENSE-2.0.html
 == Changelog ==
 = 1.0.4 =
 * 股票监控
+* 时间轴
 
 = 1.0.3 =
 * 评论支持markdown语法

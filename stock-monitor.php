@@ -23,21 +23,21 @@ function get_stock_info($stock_code) {
     return null;
 }
 
+// AJAX 处理函数
+function stock_monitor_ajax_query() {
+    $stock_code = sanitize_text_field($_POST['stock_code']);
+    $stock_info = get_stock_info($stock_code);
+    if ($stock_info) {
+        wp_send_json_success($stock_info);
+    } else {
+        wp_send_json_error('未查询到该股票信息，请检查股票代码是否正确。');
+    }
+}
+add_action('wp_ajax_stock_monitor_query','stock_monitor_ajax_query');
+
 function stock_monitor_admin_page() {
     $stock_codes = get_option('stock_monitor_selected_codes', array());
-    $query_stock_code = '';
-    $stock_info = null;
     $message = '';
-
-    if (isset($_POST['query_stock'])) {
-        $query_stock_code = sanitize_text_field($_POST['stock_code']);
-        $stock_info = get_stock_info($query_stock_code);
-        if ($stock_info) {
-            $message = '成功查询到股票信息！';
-        } else {
-            $message = '未查询到该股票信息，请检查股票代码是否正确。';
-        }
-    }
 
     if (isset($_POST['add_stock_to_list'])) {
         $add_stock_code = sanitize_text_field($_POST['add_stock_code']);
@@ -61,24 +61,15 @@ function stock_monitor_admin_page() {
     <div class="wrap">
         <h1>A股股票监控</h1>
         <?php if (!empty($message)):?>
-            <div class="notice notice-<?php echo $stock_info? 'success' : 'error';?>"><?php echo $message;?></div>
+            <div class="notice notice-<?php echo strpos($message, '成功')!== false? 'success' : 'error';?>"><?php echo $message;?></div>
         <?php endif;?>
         <h2>查询股票信息</h2>
-        <form method="post" action="">
+        <form id="query-stock-form">
             <label for="stock_code">输入要查询的股票短码:</label>
-            <input type="text" id="stock_code" name="stock_code" value="<?php echo esc_attr($query_stock_code);?>" style="width: 200px; margin-bottom: 10px;">
-            <input type="submit" name="query_stock" value="查询" class="button button-primary">
+            <input type="text" id="stock_code" name="stock_code" style="width: 200px; margin-bottom: 10px;">
+            <input type="submit" value="查询" class="button button-primary">
         </form>
-        <?php if ($stock_info && $query_stock_code):?>
-            <h3>查询到的股票信息</h3>
-            <p>股票名称: <?php echo esc_html($stock_info['name']);?></p>
-            <p>当前价格: <?php echo esc_html($stock_info['price']);?></p>
-            <p style="color: <?php echo $stock_info['change_percentage'] >= 0? 'red' : 'green';?>;">涨跌幅: <?php echo esc_html($stock_info['change_percentage']). '%';?></p>
-            <form method="post" action="">
-                <input type="hidden" name="add_stock_code" value="<?php echo esc_attr($query_stock_code);?>">
-                <input type="submit" name="add_stock_to_list" value="添加到监控列表" class="button button-secondary">
-            </form>
-        <?php endif;?>
+        <div id="query-result"></div>
 
         <h2>已监控的股票列表</h2>
         <table>
@@ -118,6 +109,47 @@ function stock_monitor_admin_page() {
         <p>如果你想指定显示的股票代码，可以使用 <code>[stock_monitor codes="600001,000001"]</code> 短码，将 “600001,000001” 替换为你要显示的股票代码，多个代码用逗号分隔。</p>
         <p>你也可以同时使用标题和指定股票代码，例如 <code>[stock_monitor title="我的股票列表" codes="600001,000001"]</code>。</p>
     </div>
+    <script>
+        document.getElementById('query-stock-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const stockCode = document.getElementById('stock_code').value;
+            const data = {
+                action: 'stock_monitor_query',
+                stock_code: stockCode
+            };
+
+            fetch(ajaxurl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams(data)
+            })
+                .then(response => response.json())
+                .then(result => {
+                    const resultDiv = document.getElementById('query-result');
+                    if (result.success) {
+                        const stockInfo = result.data;
+                        resultDiv.innerHTML = `
+                            <h3>查询到的股票信息</h3>
+                            <p>股票名称: ${stockInfo.name}</p>
+                            <p>当前价格: ${stockInfo.price}</p>
+                            <p style="color: ${stockInfo.change_percentage >= 0? 'red' : 'green'};">涨跌幅: ${stockInfo.change_percentage}%</p>
+                            <form method="post" action="">
+                                <input type="hidden" name="add_stock_code" value="${stockCode}">
+                                <input type="submit" name="add_stock_to_list" value="添加到监控列表" class="button button-secondary">
+                            </form>
+                        `;
+                    } else {
+                        resultDiv.innerHTML = '<div class="notice notice-error">'+ result.data + '</div>';
+                    }
+                })
+                .catch(error => {
+                    const resultDiv = document.getElementById('query-result');
+                    resultDiv.innerHTML = '<div class="notice notice-error">查询出错，请稍后再试。</div>';
+                });
+        });
+    </script>
     <?php
 }
 

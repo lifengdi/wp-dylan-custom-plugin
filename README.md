@@ -53,6 +53,11 @@
 - 如果你想指定显示的股票代码，可以使用 [stock_monitor codes="600001,000001"] 短码，将 “600001,000001” 替换为你要显示的股票代码，多个代码用逗号分隔。
 - 你也可以同时使用标题和指定股票代码，例如 [stock_monitor title="我的股票列表" codes="600001,000001"]。
 
+#### 9. 时间轴设置
+- 输入简码： [dcp_custom_timeline]
+- 指定分类和分页： [dcp_custom_timeline category="分类名称或ID" per_page="每页显示数量"]
+
+
 ## 插件地址
 插件下载：
 [https://github.com/lifengdi/wp-dylan-custom-plugin/releases](https://github.com/lifengdi/wp-dylan-custom-plugin/releases "https://github.com/lifengdi/wp-dylan-custom-plugin/releases")
