@@ -164,6 +164,7 @@ function setup_comment_features() {
             <style>
                 .emoji-picker {
                     position: relative;
+                    width: 100%;
                 }
                 .emoji-button {
                     background: none;
@@ -193,12 +194,13 @@ function setup_comment_features() {
                 }
                 .emoji-tabs {
                     display: flex;
-                    flex-wrap: nowrap; /* 允许tab页换行 */
+                    flex-wrap: nowrap;
                     border-bottom: 1px solid #ccc;
                     overflow-x: auto;
                     -webkit-overflow-scrolling: touch;
                     -ms-overflow-style: none;
                     scrollbar-width: none;
+                    white-space: nowrap;
                 }
                 .emoji-tabs::-webkit-scrollbar {
                     display: none;
@@ -221,6 +223,10 @@ function setup_comment_features() {
                     padding-top: 10px;
                     flex: 1;
                     padding-bottom: 10px;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    max-height: 200px;
+                    flex-wrap: wrap;
                 }
                 .emoji-group-tab {
                     display: none;
