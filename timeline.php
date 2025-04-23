@@ -342,7 +342,7 @@ DEFAULT_CSS;
             <?php submit_button('保存设置'); ?>
         </form>
         <h3>插件使用方法：</h3>
-        <p>新建一个页面，在内容区域输入简码： <code>[dcp_custom_timeline category="分类名称或ID" per_page="每页显示数量"]</code></p>
+        <p>新建一个页面，在内容区域输入简码： <code>[dcp_custom_timeline category="分类ID" per_page="每页显示数量"]</code></p>
         <h3>分类对照表：<small style="color: #e00">分类 - id</small></h3>
         <style>.custom-cat {
                 margin-right: 20px;

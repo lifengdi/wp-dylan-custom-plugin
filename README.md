@@ -55,7 +55,7 @@
 
 #### 9. 时间轴设置
 - 输入简码： [dcp_custom_timeline]
-- 指定分类和分页： [dcp_custom_timeline category="分类名称或ID" per_page="每页显示数量"]
+- 指定分类和分页： [dcp_custom_timeline category="分类ID" per_page="每页显示数量"]
 
 
 ## 插件地址
