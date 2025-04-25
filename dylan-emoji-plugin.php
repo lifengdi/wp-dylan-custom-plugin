@@ -68,8 +68,9 @@ function add_emoji_picker_to_comment_form($comment_field)
         $emoji_groups[$display_name] = $emojis;
     }
 
-    $emoji_html = '<button id="emoji-toggle" class="button emoji-tab active">OwO</button>';
-    $emoji_html .= '<div class="emoji-picker" style="display: none;">';
+    $emoji_html = '<div class="emoji-picker">';
+    $emoji_html .= '<button id="emoji-toggle" class="button emoji-tab active">OwO</button>';
+    $emoji_html .= '<div class="emoji-container" style="display: none;">';
     $emoji_html .= '<div class="emoji-tabs">';
     $tab_index = 0;
     foreach ($emoji_groups as $group_name => $emojis) {
@@ -95,12 +96,13 @@ function add_emoji_picker_to_comment_form($comment_field)
     }
     $emoji_html .= '</div>';
     $emoji_html .= '</div>';
+    $emoji_html .= '</div>';
 
     // 添加JavaScript代码来处理表情点击事件、tab切换、弹窗显示隐藏和点击空白关闭
     $emoji_html .= '<script>
         document.addEventListener("DOMContentLoaded", function() {
             const toggleButton = document.getElementById("emoji-toggle");
-            const emojiPicker = document.querySelector(".emoji-picker");
+            const emojiPicker = document.querySelector(".emoji-container");
             const tabs = document.querySelectorAll(".emoji-tab:not(#emoji-toggle)");
             const tabContents = document.querySelectorAll(".emoji-group-tab");
             const emojis = document.querySelectorAll(".emoji");
@@ -195,9 +197,11 @@ function add_emoji_css()
             position: relative;
             width: 100%;
             margin-top: 10px;
+        }
+       .emoji-container {
             max-height: 300px; /* 设置表情弹窗的最大高度 */
             overflow-y: auto; /* 超出高度时显示垂直滚动条 */
-        }
+       }
        .emoji-tabs {
             display: flex;
             flex-wrap: wrap;
