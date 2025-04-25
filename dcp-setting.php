@@ -21,6 +21,14 @@ function setup_admin_menu_pages() {
             'dcp_setting_page_content'
         );
         add_submenu_page(
+            'dcp-setting',
+            '表情包映射管理',
+            '表情包映射管理',
+            'manage_options',
+            'dcp-emoji-folder-mapping',
+            'emoji_plugin_folder_mapping_page'
+        );
+        add_submenu_page(
             'dcp-setting',                  // 父菜单 slug
             '火山引擎ImageX设置',           // 页面标题
             'ImageX 设置',                  // 菜单标题

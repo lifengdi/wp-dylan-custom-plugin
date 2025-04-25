@@ -25,6 +25,7 @@ function setup_comment_features() {
 
     function markdown_comment_text( $field ) {
         $emoji_enabled = get_option('dcp_emoji_comments_enabled', 'yes');
+        $markdown_enabled = get_option('dcp_markdown_comments_enabled', 'yes');
         $emoji_output = '';
         if ($emoji_enabled === 'yes') {
             $emoji_groups = array(
@@ -251,8 +252,12 @@ function setup_comment_features() {
             $emoji_output = ob_get_clean();
         }
 
-        $notice = '<p><small class="markdown-comment-notice">' . esc_html__( '您可以在评论表单中使用Markdown语法。',
-                'markdown-comment' ) . '</small></p>';
+        $notice = '';
+        if ($markdown_enabled === 'yes') {
+            $notice = '<p><small class="markdown-comment-notice">' . esc_html__( '您可以在评论表单中使用Markdown语法。',
+                    'markdown-comment' ) . '</small></p>';
+        }
+
         return $field . $emoji_output . $notice;
     }
 
