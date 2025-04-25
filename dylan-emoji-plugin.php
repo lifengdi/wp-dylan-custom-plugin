@@ -386,7 +386,7 @@ function emoji_plugin_folder_mapping_page()
     echo '<tr>';
     echo '<th>全局表情包开关</th>';
     echo '<th><input type="checkbox" name="emoji_global_switch" ' . ($emoji_global_switch === 'on'? 'checked' : '') . '></th>';
-    echo '<th></th>';
+    echo '<th>(不兼容markdown)</th>';
     echo '<th></th>';
     echo '<th></th>';
     echo '</tr>';
