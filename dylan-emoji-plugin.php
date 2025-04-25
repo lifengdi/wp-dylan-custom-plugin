@@ -242,6 +242,7 @@ function add_emoji_css()
        .emoji-group-tab {
             display: none;
             width: 100%;
+            overflow-y: auto;
         }
        .emoji-group-tab.active {
             display: flex;
