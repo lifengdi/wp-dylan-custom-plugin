@@ -114,6 +114,8 @@ function add_emoji_picker_to_comment_form($comment_field)
                 if (emojiPicker.style.display === "none") {
                     emojiPicker.style.display = "block";
                     toggleButton.style.display = "none";
+                    tabs.forEach(t => t.classList.remove("active"));
+                    tabContents.forEach(content => content.classList.remove("active"));
                     // 确保第一个分类为激活状态
                     tabs[0].classList.add("active");
                     tabContents[0].classList.add("active");
