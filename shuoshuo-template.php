@@ -231,6 +231,15 @@ get_header();
         text-decoration: none;
         color: inherit;
     }
+   .pagination {
+       text-align: center;
+   }
+    .pagination .page-numbers {
+        padding: 5px 10px;
+        text-decoration: none;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
 </style>
 
 <div class="shuo-content-area">
