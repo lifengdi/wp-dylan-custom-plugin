@@ -100,7 +100,7 @@ function add_emoji_picker_to_comment_form($comment_field)
 
     // 添加JavaScript代码来处理表情点击事件、tab切换、弹窗显示隐藏和点击空白关闭
     $emoji_html .= '<script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const toggleButton = document.getElementById("emoji-toggle");
             const emojiPicker = document.querySelector(".emoji-container");
             const tabs = document.querySelectorAll(".emoji-tab:not(#emoji-toggle)");
@@ -108,15 +108,15 @@ function add_emoji_picker_to_comment_form($comment_field)
             const emojis = document.querySelectorAll(".emoji");
             const commentField = document.getElementById("comment");
 
-            toggleButton.addEventListener("click", function(event) {
+            toggleButton.addEventListener("click", function (event) {
                 event.preventDefault(); // 阻止默认跳转行为
                 event.stopPropagation();
                 if (emojiPicker.style.display === "none") {
                     emojiPicker.style.display = "block";
                     toggleButton.style.display = "none";
-                    tabs.forEach(t => t.classList.remove("active"));
-                    tabContents.forEach(content => content.classList.remove("active"));
                     // 确保第一个分类为激活状态
+							 tabs.forEach(t => t.classList.remove("active"));
+							 tabContents.forEach(content => content.classList.remove("active"));
                     tabs[0].classList.add("active");
                     tabContents[0].classList.add("active");
                 } else {
@@ -126,9 +126,11 @@ function add_emoji_picker_to_comment_form($comment_field)
             });
 
             tabs.forEach((tab, index) => {
-                tab.addEventListener("click", function(event) {
+                tab.addEventListener("click", function (event) {
                     event.stopPropagation();
+                    // 移除所有页签的 active 类
                     tabs.forEach(t => t.classList.remove("active"));
+                    // 移除所有页签内容的 active 类
                     tabContents.forEach(content => content.classList.remove("active"));
 
                     tab.classList.add("active");
@@ -136,8 +138,8 @@ function add_emoji_picker_to_comment_form($comment_field)
                 });
             });
 
-            emojis.forEach(function(emoji) {
-                emoji.addEventListener("click", function(event) {
+            emojis.forEach(function (emoji) {
+                emoji.addEventListener("click", function (event) {
                     event.preventDefault(); // 阻止默认跳转行为
                     event.stopPropagation();
                     if (commentField) {
@@ -146,7 +148,7 @@ function add_emoji_picker_to_comment_form($comment_field)
                 });
             });
 
-            document.addEventListener("click", function(event) {
+            document.addEventListener("click", function (event) {
                 if (!emojiPicker.contains(event.target) && event.target!== toggleButton) {
                     emojiPicker.style.display = "none";
                     toggleButton.style.display = "block";
@@ -202,7 +204,7 @@ function add_emoji_css()
         }
        .emoji-container {
             max-height: 300px; /* 设置表情弹窗的最大高度 */
-            overflow-y: auto; /* 超出高度时显示垂直滚动条 */
+            margin-bottom: 10px;
        }
        .emoji-tabs {
             display: flex;
@@ -223,7 +225,7 @@ function add_emoji_css()
         }
        .emoji-tab:hover {
             background: #e0e0e0; /* 悬停时背景色变灰 */
-            transform: translateY(-3px); /* 悬停时向上移动 */
+            
         }
        .emoji-tab.active {
             background: #000; /* 激活状态背景色为黑色 */
@@ -239,12 +241,14 @@ function add_emoji_css()
        .emoji-tab-content {
             padding-top: 0; /* 去掉顶部内边距，实现 0 间隔 */
             display: flex;
-            flex-wrap: wrap;
+            overflow-y: auto;
+            height: 200px;
         }
        .emoji-group-tab {
             display: none;
             width: 100%;
             overflow-y: auto;
+			    margin-top: 5px;
         }
        .emoji-group-tab.active {
             display: flex;
