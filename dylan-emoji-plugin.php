@@ -193,6 +193,105 @@ function process_emoji_in_comment($comment_text)
 
 add_filter('comment_text', 'process_emoji_in_comment');
 
+
+function custom_recent_comments_length($comment_excerpt, $comment_id) {
+    // 获取评论全文
+    $comment = get_comment($comment_id);
+    $comment_text = $comment->comment_content;
+    
+    // 检查全局表情包开关并处理表情包
+    $emoji_global_switch = get_emoji_global_switch();
+    if ($emoji_global_switch === 'on') {
+        $comment_text = process_emoji_in_comment($comment_text);
+    }
+    
+    // 自定义评论长度（默认为30个字符，可根据需要调整）
+    $excerpt_length = apply_filters('custom_recent_comments_length', 40);
+    
+    // 保留HTML标签但截断文本内容
+    $comment_excerpt = safe_html_truncate($comment_text, $excerpt_length);
+    
+    // 如果截断后内容与原文相同，说明没有截断，不需要省略号
+    if (strlen($comment_text) <= $excerpt_length) {
+        $comment_excerpt = $comment_text;
+    }
+    
+    return $comment_excerpt;
+}
+
+function custom_recent_comments_length_filter($length) {
+    return apply_filters('custom_recent_comments_length', $length);
+}   
+
+function safe_html_truncate($text, $length, $ellipsis = ' [...]') {
+    // 如果文本长度小于等于目标长度，直接返回
+    if (mb_strlen(strip_tags($text)) <= $length) {
+        return $text;
+    }
+    
+    $truncated = '';
+    $open_tags = [];
+    $char_count = 0;
+    $tags = [];
+    
+    // 使用正则表达式匹配所有HTML标签
+    preg_match_all('/<[^>]*>/', $text, $tags);
+    
+    $tag_index = 0;
+    $tag_count = count($tags[0]);
+    $text_length = mb_strlen($text);
+    $tag_matched = false;
+    
+    for ($i = 0; $i < $text_length && $char_count < $length; $i++) {
+        // 检查当前位置是否是一个标签的开始
+        if ($tag_index < $tag_count && $i === strpos($text, $tags[0][$tag_index], $i)) {
+            $tag = $tags[0][$tag_index];
+            $truncated .= $tag;
+            $i += mb_strlen($tag) - 1;
+            $tag_index++;
+            $tag_matched = true;
+            
+            // 处理开始标签
+            if (preg_match('/<([a-z]+)(?:\s[^>]*)?>/i', $tag, $matches) && 
+                !preg_match('/<\/[a-z]+>/i', $tag)) {
+                array_unshift($open_tags, $matches[1]);
+            }
+            // 处理结束标签
+            elseif (preg_match('/<\/([a-z]+)>/i', $tag, $matches)) {
+                $pos = array_search($matches[1], $open_tags);
+                if ($pos!== false) {
+                    array_splice($open_tags, $pos, 1);
+                }
+            }
+        } else {
+            // 不是标签，增加字符计数
+            $truncated .= mb_substr($text, $i, 1);
+            if (!preg_match('/^\s$/', mb_substr($text, $i, 1))) {
+                $char_count++;
+            }
+            $tag_matched = false;
+        }
+    }
+    
+    // 如果因为到达长度限制而截断，添加省略号
+    if ($char_count >= $length && $i < $text_length) {
+        $truncated .= $ellipsis;
+    }
+    
+    // 关闭所有未闭合的标签
+    foreach ($open_tags as $tag) {
+        $truncated .= '</'. $tag. '>';
+    }
+    
+    return $truncated;
+}
+
+// 替换默认的评论摘要过滤器
+add_filter('get_comment_excerpt', 'custom_recent_comments_length', 10, 2);
+// 针对不同的侧边栏评论插件可能需要不同的过滤器
+add_filter('get_comment_text', 'process_emoji_in_comment');
+
+
 // 添加CSS样式
 function add_emoji_css()
 {
