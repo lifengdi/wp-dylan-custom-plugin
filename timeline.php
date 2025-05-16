@@ -220,7 +220,7 @@ function custom_time_line_display_function() {
         top: 5px;
     }
    .custom-month:hover:after {
-        background-color: #73B66B;
+        background-color: #1e73be;
     }
    .custom-post-list {
         margin:0 0 30px 100px !important;
@@ -257,7 +257,7 @@ function custom_time_line_display_function() {
         top: 9px;
     }
    .custom-post-list li:hover:after {
-        background-color: #73B66B;
+        background-color: #1e73be;
     }
    .custom-pagination{
         margin: 0;
