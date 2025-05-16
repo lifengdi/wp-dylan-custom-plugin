@@ -16,13 +16,9 @@ require_once plugin_dir_path( __FILE__ ).'shuoshuo-functions.php';
 
 require_once plugin_dir_path( __FILE__ ).'custom-archive-plugin.php';
 
-//require_once plugin_dir_path( __FILE__ ).'imagex.php';
-
 require_once plugin_dir_path( __FILE__ ).'stock-monitor.php';
 
 require_once plugin_dir_path( __FILE__ ).'dcp-setting.php';
-
-//require_once plugin_dir_path(__FILE__) . 'comments/dylan-comments.php';
 
 require_once plugin_dir_path(__FILE__) . 'dylan-emoji-plugin.php';
 
