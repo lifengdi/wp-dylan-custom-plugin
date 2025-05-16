@@ -5,7 +5,7 @@ Tags: imagex, byteoc, volcengine, 火山引擎, 字节跳动, 说说, 归档
 Requires at least: 4.6
 Tested up to: 6.8
 Requires PHP: 7.0.0
-Stable tag: 1.0.2
+Stable tag: 1.0.5
 License: Apache 2.0
 License URI: http://www.apache.org/licenses/LICENSE-2.0.html
 
