@@ -25,7 +25,7 @@ function setup_admin_menu_pages() {
             '表情包映射管理',
             '表情包映射管理',
             'manage_options',
-            'dcp-emoji-folder-mapping',
+            'dcp-setting',
             'emoji_plugin_folder_mapping_page'
         );
 //        add_submenu_page(
