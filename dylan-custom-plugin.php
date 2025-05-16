@@ -9,20 +9,20 @@ Author URI: https://www.lifengdi.com
 License: GPL2
 */
 
-define('DCLYN_CUSTOM_PLUGIN_VERSION', '1.0.4');
+define('DCLYN_CUSTOM_PLUGIN_VERSION', '1.0.5');
 
 // 引入说说相关功能文件
 require_once plugin_dir_path( __FILE__ ).'shuoshuo-functions.php';
 
 require_once plugin_dir_path( __FILE__ ).'custom-archive-plugin.php';
 
-require_once plugin_dir_path( __FILE__ ).'imagex.php';
+//require_once plugin_dir_path( __FILE__ ).'imagex.php';
 
 require_once plugin_dir_path( __FILE__ ).'stock-monitor.php';
 
 require_once plugin_dir_path( __FILE__ ).'dcp-setting.php';
 
-require_once plugin_dir_path(__FILE__) . 'comments/dylan-comments.php';
+//require_once plugin_dir_path(__FILE__) . 'comments/dylan-comments.php';
 
 require_once plugin_dir_path(__FILE__) . 'dylan-emoji-plugin.php';
 

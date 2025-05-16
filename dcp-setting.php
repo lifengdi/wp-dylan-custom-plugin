@@ -12,14 +12,14 @@ function setup_admin_menu_pages() {
             'dashicons-admin-generic',
             25
         );
-        add_submenu_page(
-            'dcp-setting',
-            '评论扩展',
-            '评论扩展',
-            'manage_options',
-            'dcp-setting',
-            'dcp_setting_page_content'
-        );
+//        add_submenu_page(
+//            'dcp-setting',
+//            '评论扩展',
+//            '评论扩展',
+//            'manage_options',
+//            'dcp-setting',
+//            'dcp_setting_page_content'
+//        );
         add_submenu_page(
             'dcp-setting',
             '表情包映射管理',
@@ -28,14 +28,14 @@ function setup_admin_menu_pages() {
             'dcp-emoji-folder-mapping',
             'emoji_plugin_folder_mapping_page'
         );
-        add_submenu_page(
-            'dcp-setting',                  // 父菜单 slug
-            '火山引擎ImageX设置',           // 页面标题
-            'ImageX 设置',                  // 菜单标题
-            'manage_options',               // 权限级别
-            'dcp-imagex',               // 子菜单 slug
-            'imagex_setting_page'          // 回调函数
-        );
+//        add_submenu_page(
+//            'dcp-setting',                  // 父菜单 slug
+//            '火山引擎ImageX设置',           // 页面标题
+//            'ImageX 设置',                  // 菜单标题
+//            'manage_options',               // 权限级别
+//            'dcp-imagex',               // 子菜单 slug
+//            'imagex_setting_page'          // 回调函数
+//        );
         add_submenu_page(
             'dcp-setting',
             '股票监控',
