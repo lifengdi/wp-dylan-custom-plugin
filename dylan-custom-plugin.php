@@ -29,3 +29,5 @@ require_once plugin_dir_path(__FILE__) . 'dylan-emoji-plugin.php';
 require_once plugin_dir_path( __FILE__ ).'timeline.php';
 
 require_once plugin_dir_path( __FILE__ ).'custom-countdown-plugin.php';
+
+require_once plugin_dir_path( __FILE__ ).'dylan-function-plugin.php';
