@@ -112,7 +112,7 @@ function setup_admin_menu_pages() {
 
 // 初始化插件
 function initialize_plugin() {
-    setup_comment_features();
+//    setup_comment_features();
     setup_admin_menu_pages();
 }
 add_action('plugins_loaded', 'initialize_plugin');
