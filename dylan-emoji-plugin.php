@@ -341,7 +341,8 @@ function add_emoji_css()
             padding-top: 0; /* 去掉顶部内边距，实现 0 间隔 */
             display: flex;
             overflow-y: auto;
-            height: 200px;
+            max-height: 220px;
+	    min-height: 120px;
         }
        .emoji-group-tab {
             display: none;
